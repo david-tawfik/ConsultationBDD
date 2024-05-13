@@ -39,13 +39,25 @@ public class LoginSteps {
         LoginPage.enterUsername(driver, username);
         LoginPage.enterPassword(driver, password);
     }
-    @Then("I should see an error saying password field cannot be left empty")
+    @Then("I should see an error saying Epic sadface: Password is required")
     public void i_should_see_an_error_saying_password_field_cannot_be_left_empty()
     {
         String errorMessage=LoginPage.getErrorMessage(driver);
-        LoginPage.assertUrlContains("Epic sadface:", errorMessage);
+        LoginPage.assertEqualUrls("Epic sadface: Password is required", errorMessage);
     }
 
+    @Then("I should see an error saying Epic sadface: Username is required")
+    public void i_should_see_an_error_saying_epic_sadface_username_is_required() {
+        // Write code here that turns the phrase above into concrete actions
+        String errorMessage=LoginPage.getErrorMessage(driver);
+        LoginPage.assertEqualUrls("Epic sadface: Username is required", errorMessage);
+    }
 
+    @Then("I should see an error saying Epic sadface: Username and password do not match any user in this service")
+    public void i_should_see_an_error_saying_epic_sadface_username_and_password_do_not_match_any_user_in_this_service() {
+        // Write code here that turns the phrase above into concrete actions
+        String errorMessage=LoginPage.getErrorMessage(driver);
+        LoginPage.assertEqualUrls("Epic sadface: Username and password do not match any user in this service", errorMessage);
+    }
 
 }

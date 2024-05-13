@@ -13,7 +13,7 @@ public class LoginPage
     static By passwordLocator = By.id("password");
     static By loginButtonLocator = By.id("login-button");
 
-    static By errorMessageLocator = By.className("error-button");
+    static By errorMessageLocator = By.xpath("//*[@id=\"login_button_container\"]/div/form/div[3]/h3");
 
 public LoginPage() throws InterruptedException {
     }
