@@ -9,12 +9,11 @@ import java.time.Duration;
 
 public class LoginPage
 {
-    static By  emailLocator = By.id("email");
+    static By  usernameLocator = By.id("user-name");
     static By passwordLocator = By.id("password");
-    static By submitButtonLocator = By.id("submit");
+    static By loginButtonLocator = By.id("login-button");
 
-    static By errorMessageLocator = By.id("error");
-    static By signUpButtonLocator = By.id("signup");
+    static By errorMessageLocator = By.className("error-button");
 
 public LoginPage() throws InterruptedException {
     }
@@ -26,12 +25,12 @@ public LoginPage() throws InterruptedException {
 
     public static void goToLoginPage(WebDriver driver) throws InterruptedException {
         Thread.sleep(1000);
-        driver.get("https://thinking-tester-contact-list.herokuapp.com/login");
+        driver.get("https://www.saucedemo.com/");
     }
-    public static void enterEmail(WebDriver driver, String email)
+    public static void enterUsername(WebDriver driver, String email)
     {
-        explicitWait(driver,15, emailLocator);
-        driver.findElement(emailLocator).sendKeys(email);
+        explicitWait(driver,15, usernameLocator);
+        driver.findElement(usernameLocator).sendKeys(email);
     }
 
     public static void enterPassword(WebDriver driver, String password)
@@ -39,13 +38,13 @@ public LoginPage() throws InterruptedException {
         driver.findElement(passwordLocator).sendKeys(password);
     }
 
-    public static void clickSubmitButton(WebDriver driver) throws InterruptedException {
-        driver.findElement(submitButtonLocator).click();
+    public static void clickLoginButton(WebDriver driver) throws InterruptedException {
+        driver.findElement(loginButtonLocator).click();
         Thread.sleep(3000);
     }
 
     public static void clickSignUpButton(WebDriver driver) throws InterruptedException {
-        driver.findElement(signUpButtonLocator).click();
+        driver.findElement(loginButtonLocator).click();
            Thread.sleep(3000);
     }
 
@@ -60,6 +59,12 @@ public LoginPage() throws InterruptedException {
         }
     }
 
+    public static void assertUrlContains(String expectedUrl, String actualUrl)
+    {
+        if (!actualUrl.contains(expectedUrl)) {
+            throw new AssertionError("URL does not contain expected value: expected=" + expectedUrl + ", actual=" + actualUrl);
+        }
+    }
 
 
 
